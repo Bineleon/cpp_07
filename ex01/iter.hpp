@@ -5,7 +5,7 @@
 #include <string>
 
 template < typename T, typename U >
-void iter(T *array, size_t lenArray, U (*func))
+void iter(T *array, size_t const & lenArray, U (*func))
 {
     for (size_t i = 0; i < lenArray; i++)
     {
@@ -14,7 +14,7 @@ void iter(T *array, size_t lenArray, U (*func))
 }
 
 template < typename T >
-void printElement(T & element)
+void printElement(T const & element)
 {
     std::cout << element << std::endl;
 }
