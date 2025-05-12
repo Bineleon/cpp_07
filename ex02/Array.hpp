@@ -6,28 +6,63 @@
 template < typename T >
 class Array
 {
-    public:
-        Array(void): _array(NULL), _n(0){}
-        Array(unsigned int n): _n(n)
-        {
-            _array = new T[n];
-        }
-        Array(const Array& src)
-        {
-            for (int i = 0; i < _n; ++i)
-                this->_array[i] = src._array[i];
-        }
-	    Array& operator=(const Array& rhs)
-        {
-            // delete _array;
-            // _array = new (*rhs._array);
-            // return *this;
-        }
-        ~Array(void){}
-    private:
-        unsigned int _n;
-        T *_array;
+	public:
+		class IndexOutOfBoundException: public std::exception
+		{
+			public:
+			virtual const char* what() const throw()
+			{
+				return ("Index out of bound");
+			}
+		};
+		Array(void): _n(0), _array(NULL) {}
+		Array(unsigned int n): _n(n)
+		{
+			_array = new T[n];
+		}
+		Array(const Array& src)
+		{
+			_n = src._n;
+			_array = new T[src._n];
+			for (unsigned int i = 0; i < _n; ++i)
+				_array[i] = src._array[i];
+		}
+		Array& operator=(const Array& rhs)
+		{
+			if (this != &rhs)
+			{
+				delete [] _array;
+				_n = rhs._n;
+				_array = new T[rhs._n];
+				for (unsigned int i = 0; i < _n; ++i)
+					_array[i] = rhs._array[i];
+			}
+			return *this;
+		}
+		~Array(void)
+		{
+			delete [] _array;
+		}
+		T & operator[] (unsigned i)
+		{
+			if (i >= _n)
+				throw IndexOutOfBoundException();
+			return _array[i];
+		}
+		const T & operator[] (unsigned i) const
+		{
+			if (i >= _n)
+				throw IndexOutOfBoundException();
+			return _array[i];
+		}
+		unsigned int const & size(void) const
+		{
+			return _n;
+		}
 
+	private:
+		unsigned int _n;
+		T *_array;
 };
 
 # define RESET "\033[0m"
