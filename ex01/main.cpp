@@ -16,65 +16,35 @@ void printHeader(const std::string& str)
 	std::cout << RESET << std::endl;
 }
 
-// int main(void)
-// {
-//     {
-//         printHeader("Test: std::string");
-
-//         std::string array[5] = {"Test1", "Test2", "Test3", "Test4", "Test5"};
-//         ::iter(array, 5, printElement<std::string>);
-//     }
-//     {
-//         printHeader("Test: int");
-
-//         int array[5] = {1, 2, 3, 4 ,5};
-//         ::iter(array, 5, printElement<int>);
-
-//     }
-//     {
-//         printHeader("Test: pointer");
-
-//         char a = 'a';
-//         char b = 'b';
-//         char c = 'c';
-//         char d = 'd';
-//         char e = 'e';
-
-//         char *array[5] = {&a, &b, &c, &d ,&e};
-
-//         ::iter(array, 5, printElement<void *>);
-
-//     }
-
-//     return 0;
-// }
-
-class Awesome
+int main(void)
 {
-  public:
-    Awesome( void ) : _n( 42 ) { return; }
-    int get( void ) const { return this->_n; }
-  private:
-    int _n;
-};
+    {
+        printHeader("Test: std::string");
 
-std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
-{
-  o << rhs.get();
-  return o;
-}
+        std::string array[5] = {"Test1", "Test2", "Test3", "Test4", "Test5"};
+        ::iter(array, 5, printElement<std::string>);
+    }
+    {
+        printHeader("Test: int");
 
-template< typename T >
-void print( T& x )
-{
-  std::cout << x << std::endl;
-  return;
-}
+        int array[5] = {1, 2, 3, 4 ,5};
+        ::iter(array, 5, printElement<int>);
 
-int main() {
-  int tab[] = { 0, 1, 2, 3, 4 };
-  Awesome tab2[5];
+    }
+    {
+        printHeader("Test: pointer");
 
-  iter( tab, 5, print<const int> );
-  iter( tab2, 5, print<Awesome> );
+        char a = 'a';
+        char b = 'b';
+        char c = 'c';
+        char d = 'd';
+        char e = 'e';
+
+        char *array[5] = {&a, &b, &c, &d ,&e};
+
+        ::iter(array, 5, printElement<void *>);
+
+    }
+
+    return 0;
 }

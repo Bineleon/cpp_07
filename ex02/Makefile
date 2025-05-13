@@ -7,7 +7,7 @@ CC					= c++
 FLAGS				= -Wall -Wextra -Werror -g3 -std=c++98 -MMD -MP
 
 SRC_DIR				= .
-SRCS				= main.cpp
+SRCS				= main_perso.cpp
 
 RM					= rm -rf
 OBJS_DIR			= ./objs/
