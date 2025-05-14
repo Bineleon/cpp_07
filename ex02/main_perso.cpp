@@ -140,6 +140,6 @@ int main(void)
 	{
 		std::cerr << SMRED << "Exception: " << e.what() << RESET << std::endl;
 	}
-
+	
 	return 0;
 }

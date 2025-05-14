@@ -40,8 +40,7 @@ int main(int, char**)
     }
     try
     {
-		numbers[MAX_VAL - 1] = 0;
-		std::cout << numbers[MAX_VAL - 1] << std::endl;
+		numbers[MAX_VAL] = 0;
     }
     catch(const std::exception& e)
     {
